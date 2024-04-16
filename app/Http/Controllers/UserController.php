@@ -8,9 +8,11 @@ use App\Models\UserCount;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Sleep;
 use Illuminate\Support\Str;
 use PhpOffice\PhpWord\TemplateProcessor;
+use App\Jobs\addNumbers;
 
 class UserController extends Controller
 {
@@ -82,13 +84,12 @@ class UserController extends Controller
     }
     
     public function addNumbers(){
-        var_dump('asdf');
-        $arr = array_fill(1,100,'text');
-        foreach ($arr as $val) {
-            echo $val;
-            Sleep::for(5)->seconds();
-            
-        }
+        dispatch(new addNumbers(1, 1500));
+        return view('addNumbers');
+    }
+    
+    public function checkFile(){
+        return view('addNumbers');
     }
 
 
