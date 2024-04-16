@@ -30,9 +30,8 @@ Route::group(['prefix' => 'mail'], function (){
 
 Route::get('/first-or-create', [Controllers\UserController::class,'firstOrCreate'])->name('firstOrCreate');
 
-Route::get('/add-numbers',[Controllers\UserController::class,'addNumbers'])->name('addNumbers');
-
-
 Route::resource('post',Controllers\PostController::class);
+
+Route::get('/add-numbers',[Controllers\UserController::class,'addNumbers'])->name('addNumbers');
 
 Route::get('/check-file',[Controllers\UserController::class,'checkFile'])->name('check.file');
