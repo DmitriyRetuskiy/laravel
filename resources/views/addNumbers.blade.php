@@ -2,9 +2,12 @@
 <body>
  <?php 
     echo __DIR__ . '<br />';
-    if(file_exists('/storage/file.txt'))
+    $file =  dirname( __DIR__, 2 ) . '/app/public/file.txt';
+    echo $file . '<br />';
+    if(file_exists($file))
     {
-        echo 'файл есть';
+        echo 'файл существует есть';
+       
     }
  ?>
 

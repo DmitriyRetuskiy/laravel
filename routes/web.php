@@ -34,3 +34,5 @@ Route::get('/add-numbers',[Controllers\UserController::class,'addNumbers'])->nam
 
 
 Route::resource('post',Controllers\PostController::class);
+
+Route::get('/check-file',[Controllers\UserController::class,'checkFile'])->name('check.file');

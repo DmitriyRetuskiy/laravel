@@ -37,8 +37,10 @@ class addNumbers implements ShouldQueue
         foreach($array as $val){
             $array[$i] = $val . '_' . $i;
             $i++;
+            sleep(2);
             $str .= $array[$i];
         }
         Storage::disk('public')->put('file.txt', $str);
+        
     }
 }
