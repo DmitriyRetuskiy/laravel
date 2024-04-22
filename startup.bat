@@ -1,4 +1,4 @@
-echo "%date% %time%">"startBat.txt"
+echo "This is updated from date %date% time %time%">"startup.txt"
 git add .
 git commit -m "[fix] new time %time%"
 git push origin master
