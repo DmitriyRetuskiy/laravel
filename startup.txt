@@ -1,1 +1,1 @@
-This is updated from date %date% time %time%
+This is updated from date $start_time
