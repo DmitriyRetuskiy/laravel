@@ -3,7 +3,7 @@ echo "\n";
 echo "-----------------------";
 echo "----Git update repo----";
 echo "-----------------------";
-sleep 5
+sleep 3
 start_time=$(date) 
 echo "This is updated from date $start_time">"/home/dim/Public/domains/laravel/startup.txt"
 git -C "/home/dim/Public/domains/laravel" add .
