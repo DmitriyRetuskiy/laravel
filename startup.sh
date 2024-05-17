@@ -1,4 +1,3 @@
-#!/bin/bash
 echo "\n";
 echo "-----------------------";
 echo "----Git update repo----";
@@ -9,4 +8,5 @@ echo "This is updated from date $start_time">"/home/dim/Public/domains/laravel/s
 git -C "/home/dim/Public/domains/laravel" add .
 git -C "/home/dim/Public/domains/laravel" commit -m "[fix] new time $start_time"
 git -C "/home/dim/Public/domains/laravel" push origin master
+$SHELL
 
