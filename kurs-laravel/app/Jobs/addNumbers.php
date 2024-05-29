@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class addNumbers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    
+
     protected $quantiry;
     protected $first;
 
@@ -30,17 +30,18 @@ class addNumbers implements ShouldQueue
      */
     public function handle(): void
     {
-        Storage::disk('public')->delete('file.txt');
+
+        Storage::disk('public')->delete('file3.txt');
         $array = array_fill(1,1500,'text');
         $i=0;
         $str = '';
-        foreach($array as $val){
+        foreach($array as $val) {
             $array[$i] = $val . '_' . $i;
             $i++;
-            sleep(2);
+            sleep(1000);
             $str .= $array[$i];
         }
-        Storage::disk('public')->put('file.txt', $str);
-        
+        Storage::disk('public')->put('file3.txt', $str);
+
     }
 }

@@ -9,6 +9,14 @@ services:
         working_dir: /var/www/html
         ports:
             - "80:80"
+    sql:
+        image: mysql:5.7.41-oracle
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+            MYSQL_DATABASE: "${DB_DATABASE}"
+        ports:
+            - "3306:${DB_PORT}"
     composer:
         image: composer:2.2
         volumes:

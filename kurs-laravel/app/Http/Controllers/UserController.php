@@ -82,12 +82,16 @@ class UserController extends Controller
         var_dump($color);
         die();
     }
-    
-    public function addNumbers(){
+
+    public function addNumbers() {
+    // method for jobs
+
         dispatch(new addNumbers(1, 1500));
-        return view('addNumbers');
+
+        return 'This is method from jobs';
+
     }
-    
+
     public function checkFile(){
         return view('addNumbers');
     }
