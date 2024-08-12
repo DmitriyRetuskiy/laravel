@@ -39,7 +39,9 @@ class UserController extends Controller
 
     public function mailForm()
     {
-        return view('layout.layout');
+        echo 'mailForm';
+        die;
+//        return view('layout.layout');
     }
 
     public function falconTemplate()
@@ -49,8 +51,8 @@ class UserController extends Controller
 
     public function mail(Request $requset)
     {
-        $body = "<p>Имя: {$requset->name} </p>";
-        $body .= "<p>Сообщение: {$requset->text} </p>";
+        $body = "<p>Имя: Дмитрий  </p>"; //{$requset->name}
+        $body .= "<p>Сообщение: Привет из Ларавел</p>";
         Mail::to('reutskiy-dmitriy@mail.ru')
             ->send(new TestMail($body));
 
@@ -83,11 +85,10 @@ class UserController extends Controller
         die();
     }
 
+    //run queue in laravel
     public function addNumbers() {
     // method for jobs
-
         dispatch(new addNumbers(1, 1500));
-
         return 'This is method from jobs';
 
     }

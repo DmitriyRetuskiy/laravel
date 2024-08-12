@@ -2,11 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Models\Person;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class addNumbers implements ShouldQueue
@@ -30,18 +32,38 @@ class addNumbers implements ShouldQueue
      */
     public function handle(): void
     {
-
-        Storage::disk('public')->delete('file3.txt');
-        $array = array_fill(1,1500,'text');
-        $i=0;
+        // doesn't work if user isn't 1000
+        // doesn't work if directory haven't permissions -R 777
         $str = '';
-        foreach($array as $val) {
-            $array[$i] = $val . '_' . $i;
-            $i++;
-            sleep(1000);
-            $str .= $array[$i];
+//        Log::info('ffffffffffffffffffffffffffffffffffffff');
+        $array = array_fill(1,500,'text');
+        foreach ($array as $key=>$val){
+            $str .= $array[$key];
         }
-        Storage::disk('public')->put('file3.txt', $str);
 
+
+//        sleep(5);
+//        Storage::disk('public')->put('file3.txt', $str);
+
+//        Log::info('The work is done');
+
+        // don't work in one task with sleep() method
+        try {
+            $Person = new Person();
+            $Person->name = 'asdfdf';
+            $Person->save();
+        } catch (\Exception $e) {
+            $this->failed($e);
+        }
+
+
+    }
+
+    // use failed method for catch exception
+    public function failed(\Exception $exception)
+    {
+        log::info('This queue failed');
+//        $exception->getMessage();
+        // etc...
     }
 }

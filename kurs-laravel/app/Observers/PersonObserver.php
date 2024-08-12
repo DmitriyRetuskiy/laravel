@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Person;
 use App\Models\UserCount;
+use Illuminate\Support\Facades\Log;
 
 class PersonObserver
 {
@@ -12,9 +13,16 @@ class PersonObserver
      */
     public function created(Person $person): void
     {
-        $Count = UserCount::first();
-        $Count->count++;
-        $Count->save();
+        // if count null it doesn't work!!!!
+
+//        $Count = UserCount::first();
+//        if(empty($Count->count)) {
+//            $Count->count = 1;
+//        } else {
+//            $Count->count++;
+//        }
+//        $Count->save();
+
     }
 
     /**

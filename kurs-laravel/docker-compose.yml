@@ -11,12 +11,23 @@ services:
             - "80:80"
     sql:
         image: mysql:5.7.41-oracle
+        #image: mysql:8.0
         command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
             MYSQL_DATABASE: "${DB_DATABASE}"
         ports:
             - "3306:${DB_PORT}"
+#    postgresMTS:
+#        image: 'postgres:13.8-alpine'
+#        container_name: postgresMTS
+#        ports:
+#            - "5432:5432"
+#        environment:
+#            POSTGRES_DB: concordia-db
+#            POSTGRES_USER: dbuser
+#            POSTGRES_PASSWORD: dbpassword
+
     composer:
         image: composer:2.2
         volumes:

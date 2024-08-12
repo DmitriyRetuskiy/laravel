@@ -24,8 +24,8 @@ Route::get('/falcon', [Controllers\UserController::class,'falconTemplate'])->nam
 Route::get('/redis', [Controllers\UserController::class,'redisShow'])->name('redis.show')->middleware('person');
 
 Route::group(['prefix' => 'mail'], function (){
-    Route::get('/mail', [Controllers\UserController::class, 'mailForm'])->name('mail.form');
-    Route::post('/mail', [Controllers\UserController::class, 'mail'])->name('mail');
+//    Route::get('/', [Controllers\UserController::class, 'mailForm'])->name('mail.form');
+    Route::get('/', [Controllers\UserController::class, 'mail'])->name('mail');
 });
 
 Route::get('/first-or-create', [Controllers\UserController::class,'firstOrCreate'])->name('firstOrCreate');
