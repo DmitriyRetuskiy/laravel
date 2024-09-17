@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Sleep;
 use Illuminate\Support\Str;
+use Nette\Utils\Random;
 use PhpOffice\PhpWord\TemplateProcessor;
 use App\Jobs\addNumbers;
 
@@ -19,17 +20,31 @@ class UserController extends Controller
     public  function index(Request $request)
     {
 //       pagination withou laravel methods
-        $take = 1; // How rows we show
-        $skip = $request->page*$take;
-        $count = Person::Count();
-        // get only specify
-        $personsSkip = Person::query()
-            ->select('id','name')
-            ->skip($skip)  //$request->page
-            ->take($take)
-            ->get()
-            ->toArray();
+        $person = new Person();
+        $person->name =  md5(uniqid(rand(1,3), true));
+        $person->sername =  md5(uniqid(rand(1,3), true));
+        $person->phone = rand(11111111,9999999);
+        $person->save();
 
+//        // skip take pagination
+//        // How rows we show
+//        $take = 1;
+//        $skip = $request->page*$take;
+//        $count = Person::Count();
+//        // get only specify
+//        $personsSkip = Person::query()
+//            ->select('id','name')
+//            ->skip($skip)
+//            ->take($take)
+//            ->get()
+//            ->toArray();
+
+        $take = 1;
+        $count = Person::Count();
+        $skip = $request->page*$take;
+
+        $personsSkip = Person::query()
+          ->select('id','name')->paginate(5);
 
 
         return view('home', ['persons' => $personsSkip,

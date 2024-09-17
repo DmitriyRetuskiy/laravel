@@ -19,7 +19,7 @@ $midlleware = new  Middleware\Person;
 Route::get('/', [Controllers\UserController::class,'index']);
 
 
-Route::get('/falcon', [Controllers\UserController::class,'falconTemplate'])->name('template');
+Route::get('/falcon', [Controllers\UserControllerdocker::class,'falconTemplate'])->name('template');
 
 Route::get('/redis', [Controllers\UserController::class,'redisShow'])->name('redis.show')->middleware('person');
 
