@@ -1,16 +1,33 @@
 echo "\n";
-echo "-----------------------";
-echo "----Git update repo----";
-echo "-----------------------";
+echo "---------------------------------------";
+echo "----This is release loop in sh file----";
+echo "---------------------------------------";
 echo "\n";
-sleep 3
-start_time=$(date) 
-echo "This is updated from date $start_time">"/home/dim/Public/domains/laravel/startup.txt"
-git add .
-git commit -m "[fix] new time $start_time"
-git push origin master
-echo "\n"
-echo "Updated success \n"
+sleep 1
+
+# ---- for cycle in array sh ---- 
+
+#for planet in Меркурий Венера Земля Марс Юпитер Сатурн Уран Нептун Плутон
+#do
+#  sleep 2
+  
+#  if [ "$planet" = "Земля" ] # если земля то выводи другую строку
+#   then 
+#     echo "Это земля!"
+#   else
+#     echo $planet
+#  fi 
+
+#done
+
+# ---- for reading lines in file ----
+
+#for line in $(cat startup.sh)
+#do 
+#   echo $line ; sleep 1
+#done 
+
+
 # ---- for not current folder in git we ca use ----
 #git -C "/home/dim/Public/domains/laravel" add .
 #git -C "/home/dim/Public/domains/laravel" commit -m "[fix] new time $start_time"
