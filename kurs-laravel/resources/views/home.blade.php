@@ -15,9 +15,6 @@
 
             <p class="my-welcome"> Привет это шаблон </p>
 
-
-
-
             @if(!empty($persons))
                     @foreach($persons as $person)
                         {{$person['id']}} &nbsp; &nbsp; {{$person['name']}} <br >
@@ -33,7 +30,7 @@
             <div class="card-body">
 
                 <div class="col-md-12 col-3">
-                    {{$persons->links('vendor')}}
+                    {{$persons->links('pagination::bootstrap-4')}}
                 </div>
 
             </div>
