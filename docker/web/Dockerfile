@@ -12,6 +12,10 @@ RUN apt-get update && apt-get install -y \
     wkhtmltopdf \
     cron
 
+# ---- install grpc ----
+#RUN pecl install grpc
+#RUN pecl install protobuf
+
 RUN pecl install redis && docker-php-ext-enable redis
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo sockets pdo_mysql mbstring exif pcntl bcmath gd zip && a2enmod rewrite
